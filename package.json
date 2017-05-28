@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack -d --watch",
+    "build": "webpack -p"
   },
   "author": "",
   "license": "ISC",
@@ -14,10 +15,7 @@
     "babel-preset-react": "^6.24.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-masonry-component": "^5.0.5",
     "webpack": "^2.6.1"
-  },
-    "scripts": {
-    "dev": "webpack -d --watch",
-    "build" : "webpack -p"
   }
 }

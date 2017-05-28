@@ -1,5 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
+import Masonry from 'react-masonry-component';
 
 class ServerModel
 {
@@ -95,6 +96,38 @@ class App extends React.Component {
     }
 }
 
+var masonryOptions = {
+    transitionDuration: 0
+}
+
+class Gallery extends React.Component {
+    render()
+    {
+        var childElements = this.props.elements.map(function(element){
+            return(
+                <li key={element.id} className="image-element-class">
+                    <img src={element.src} />
+                </li>);
+        });
+
+        return (
+                <Masonry
+                    className={'my-gallery-class'}
+                    elementType={'ul'}
+                    options={masonryOptions}
+                    disableImagesLoaded={false}
+                    updateOnEachImageLoad={false}>
+                    {childElements}
+                    </Masonry>
+            )
+    }
+}
+
 var myModel = new ServerModel;
 
-render(<App server={myModel} />, document.getElementById('app'));
+var element1 = {id: 1, src: 'http://i.imgur.com/OrQ2F7N.jpg'};
+var element2 = {id: 2, src: 'http://i.imgur.com/OrQ2F7N.jpg'};
+var elementsArray = [element1, element2];
+
+//render(<App server={myModel} />, document.getElementById('app'));
+render(<Gallery elements={elementsArray}/>, document.getElementById('app'));
